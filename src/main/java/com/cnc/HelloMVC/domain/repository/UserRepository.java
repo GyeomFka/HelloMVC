@@ -1,18 +1,25 @@
-package com.cnc.HelloMVC.repository;
+package com.cnc.HelloMVC.domain.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.cnc.HelloMVC.entity.User;
+import com.cnc.HelloMVC.domain.entity.User;
 
 @Repository
 public class UserRepository {
 	private List<User> db = new ArrayList<>();
 	{
-		db.add(User.builder().id(1L).name("KIM").build());
-		db.add(User.builder().id(2L).name("KIM").build());
+		db.add(User.builder()
+			.id(1L)
+			.name("KIM")
+			.build());
+
+		db.add(User.builder()
+			.id(2L)
+			.name("KIM")
+			.build()); //생성인자의 순서를 고려하지 않아도 된다.
 	}
 
 	public User findUser(Long id) {

@@ -1,17 +1,16 @@
-package com.cnc.HelloMVC.controller;
+package com.cnc.HelloMVC.web.controller;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cnc.HelloMVC.entity.User;
-import com.cnc.HelloMVC.service.UserService;
+import com.cnc.HelloMVC.domain.entity.User;
+import com.cnc.HelloMVC.domain.service.UserService;
+import com.cnc.HelloMVC.web.dto.UserDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +25,12 @@ public class UserController {
 		return userService.findUserById(id);
 	}
 
+	@GetMapping("/user/dto/{id}")
+	public UserDto findUserDto(@PathVariable Long id) {
+		return userService.findUserDtoById(id);
+
+	}
+
 	@GetMapping("/users")
 	public List<User> findUsers() {
 		return userService.findUsers();
@@ -35,12 +40,6 @@ public class UserController {
 	//read, create, update, delete
 	@PostMapping("/user")
 	public User createUser(User user) {
-		Long id = 5L;
-		/*User user = User.builder()
-			.id(id)
-			.name(userName)
-			.build();*/
-
 		return userService.createUser(user);
 	}
 

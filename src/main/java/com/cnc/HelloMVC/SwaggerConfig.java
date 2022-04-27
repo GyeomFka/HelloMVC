@@ -16,7 +16,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket apit() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-			.apis(RequestHandlerSelectors.basePackage("com.cnc.HelloMVC.controller"))
+			.apis(RequestHandlerSelectors.basePackage("com.cnc.HelloMVC.web.controller"))
 			.paths(PathSelectors.any())
 			.build();
 	}
